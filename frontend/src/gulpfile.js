@@ -1,3 +1,4 @@
+// Dependency declaration, don't forget tp 'npm install' in the frontend/src folder
 const gulp 		 = require( 'gulp' )
 const rimraf	 = require( 'rimraf' )
 const sass 		 = require( 'gulp-sass' )
@@ -7,6 +8,7 @@ const concat 	 = require( 'gulp-concat' )
 const pug 		 = require( 'gulp-pug' )
 const watch 	 = require( 'gulp-watch' )
 
+// Put all relevamt paths in one place
 const paths = {
 	source: {
 		root: __dirname,
@@ -22,27 +24,25 @@ const paths = {
 	}
 }
 
+// Make the default task listen for changes
 gulp.task( 'default', () => {
-  // Gulp default
-  console.log( 'Gulp works, but this command does nothing' )
+  gulp.start( 'watch' )
 } )
 
-
+// Rmrf task that deletes the build files before tasks
 gulp.task( 'clean', ( cb ) => {
 	rimraf( paths.build.root, cb )
 }) 
 
+// Compiling and writing styles
 gulp.task( 'styles', ['clean'], ( cb ) => {
-	console.log( 'writing styles from ' + paths.source.scss )
-	console.log( 'writing styles to ' + paths.build.css )
 	return gulp.src( paths.source.scss )
 	.pipe( sass().on( 'error', sass.logError ) )
 	.pipe( gulp.dest( paths.build.css ) )
 } )
 
+// Compiling and writing scripts, they are all combined into one all.js file
 gulp.task( 'scripts', ['clean'], ( cb ) => {
-	console.log( 'writing scripts from ' + paths.source.js )
-	console.log( 'writing scripts to ' + paths.build.js )
 	return gulp.src( paths.source.js )
 	.pipe( sourcemaps.init() )
 	.pipe( babel({
@@ -53,16 +53,17 @@ gulp.task( 'scripts', ['clean'], ( cb ) => {
 	.pipe( gulp.dest( paths.build.js ) )
 } )
 
+// Compiling and writing the pug synax views to html
 gulp.task( 'views', ['clean'], ( cb ) => {
-	console.log( 'writing views from ' + paths.source.pug )
-	console.log( 'writing views to ' + paths.build.html )
   return gulp.src( paths.source.pug )
-  .pipe( pug({}) )
+  .pipe( pug() )
   .pipe( gulp.dest( paths.build.html ) )
 } )
 
+// Have one task that completes all build tasks
 gulp.task('build', ['clean', 'styles', 'scripts', 'views'], () => {})
 
+// Watch the source directory for changes and compile when changes are detected
 gulp.task( 'watch', ['build'], () => {
   return watch( paths.source.root, () => {
     gulp.start( 'build' )
