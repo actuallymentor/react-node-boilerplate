@@ -1,1 +1,0 @@
-{"version":3,"sources":["app.js","useless.js"],"names":[],"mappings":";;AAAA,IAAI,MAAM,SAAN,GAAM,GAAQ;AACjB,SAAQ,GAAR,CAAa,+BAAb;AACA,CAFD;;AAIA;;;ACJA,QAAQ,GAAR,CAAa,sBAAb","file":"all.js","sourcesContent":["var app = (  ) => {\n\tconsole.log( \"This app has no functionality\" )\n}\n\napp(  )","console.log( 'I am not very useful' )"],"sourceRoot":"/source/"}
