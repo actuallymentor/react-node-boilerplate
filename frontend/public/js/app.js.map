@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js","useless.js"],"names":["app","console","log"],"mappings":"YAAA,IAAIA,KAAM,WACTC,QAAQC,IAAK,iCACbF,OCFDC,QAAQC,IAAK","file":"app.js","sourcesContent":["var app = (  ) => {\n\tconsole.log( \"This app has no functionality\" )\n}\n\napp(  )","console.log( 'I am not very useful' )"],"sourceRoot":"/source/"}
