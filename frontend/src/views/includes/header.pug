@@ -1,14 +1,15 @@
 doctype html
 html
 	head
-		title Material Skeleton
+		title #{pagetitle}
 		link( href='./css/styles.css', rel='stylesheet' )
-		script( src='./js/dependencies.js' )
 	body
 		nav.nav-wrapper
 			a.brand-logo Logo
 			ul#nav-mobile.right.hide-on-med-and-down
 				li
 					a( href='#' ) Home
+				li
+					a.modal-trigger( href='#loginmodal' ) Login / Register
 				li
 					a( href='#' ) Contact

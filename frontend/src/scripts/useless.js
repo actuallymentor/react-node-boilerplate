@@ -1,1 +1,1 @@
-console.log( 'I am not very useful' )
+console.log( 'I am not a useful app' )

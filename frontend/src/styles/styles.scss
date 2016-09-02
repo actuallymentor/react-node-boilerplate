@@ -1,5 +1,64 @@
-// Hello
+$primary-color-dark:   #388E3C;
+$primary-color:        #4CAF50;
+$primary-color-light:  #C8E6C9;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FFC107;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
 
+// Sticky footer
 body {
-	color: weird;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+main {
+	flex: 1 0 auto;
+}
+
+// Navbar
+nav {
+	padding: 0 10px;
+	background-color: $primary-color;
+}
+
+// Header intro
+.header-intro {
+	width: 100%;
+    height: 300px;
+    background-color: $primary-color;
+    .valign-wrapper {
+    	height: 100%;
+	    margin-top: -32px;
+    }
+    #headertitle {
+    	margin: -20px 0 10px 0;
+    }
+    #headersub {
+    	margin: 0;
+    	font-size: 20px;
+    	font-style: italic;
+    }
+}
+
+// Main body
+
+.col.card {
+	padding: 0 50px 20px 50px;
+}
+#index {
+	.card {
+		margin-top: -80px;
+	}
+}
+
+// Modals
+#loginmodal {
+	max-width: 400px;
+}
+
+// Footer
+footer.page-footer {
+	background-color: $primary-color;
 }
