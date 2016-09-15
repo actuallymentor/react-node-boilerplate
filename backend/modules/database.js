@@ -2,6 +2,7 @@
 var db = {
 	mod: {}
 }
+var bcrypt = require( 'bcrypt-nodejs' )
 
 // Set up sql
 var Sequelize = require( 'sequelize' )
@@ -27,14 +28,21 @@ db.User = db.conn.define( 'user', {
 	}
 })
 
+bcrypt.hash("bacon", null, null, function(err, hash) {
+    // Store hash in your password DB.
+});
+
 // Synchronise with database
 db.conn.sync( {force: true} ) .then( (  ) => {
-	db.User.create( {
+	bcrypt.hash("ohnoplaintext", null, null, function(err, hash) {
+    db.User.create( {
 		email: 'mentor@palokaj.co',
-		password: 'ohnoplaintext'
+		password: hash
 	} ).then( ( user ) => {
 		console.log( 'Created ' + user.email + ' with pass ' + user.password )
 	} )
+	})	
+	
 } ).then( (  ) => {
 	console.log ( 'Database sync succeeded' )
 }, ( err ) => {

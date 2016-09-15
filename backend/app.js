@@ -10,7 +10,7 @@ var db = require( './modules/database' )
 app.use( '/', require( __dirname + '/routes/ping' ) )
 
 // Login management
-app.use( '/login/', require( __dirname + '/modules/passport-local' ) )
+app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 
 // Listen for requests
 var server = app.listen ( 3000, () => {
