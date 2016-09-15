@@ -83,11 +83,11 @@ gulp.task( 'dependency-scripts', ( cb ) => {
 gulp.task( 'scripts', ( cb ) => {
 	return gulp.src( paths.source.js.app )
 	.pipe( sourcemaps.init() )
+	.pipe( concat('app.js') )
 	.pipe( babel({
 		presets: ['es2015']
 	}))
 	.on( 'error', swallowError )
-	.pipe( concat('app.js') )
 	.pipe( uglify() )
 	.pipe( sourcemaps.write('.') )
 	.pipe( gulp.dest( paths.build.js ) )

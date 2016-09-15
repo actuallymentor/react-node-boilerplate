@@ -16,4 +16,11 @@ router.route( '/local' )
 	res.send ( req.user )
 } )
 
+// Global logout route
+router.route( '/destroy' )
+.all( ( req, res ) => {
+	req.logout(  )
+	res.send( 'User logged out' )
+} )
+
 module.exports = router

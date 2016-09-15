@@ -17,18 +17,19 @@ passportLocal.use( new LocalStrategy(
 				email: username
 			}
 		} ).then( ( user ) => {
+			if( user == undefined ) {
+				console.log( 'User not found' )
+				return done( null, false, { 
+					message: 'Incorrect username or password' 
+				} )
+			}
 			console.log( 'Found user ' + user.email )
 			bcrypt.compare( password, user.password, ( err, res ) => {
 				console.log( 'Password evaluated ' + res )
 				if ( res == true ) {
 					user.password = 'correct'
 					return done(null, user)
-				} else if ( user.email != undefined ) {
-				console.log( 'User not found' )
-				return done( null, false, { 
-					message: 'Incorrect username or password' 
-				} )
-			} else {
+				} else {
 				console.log( 'Something really messed up' )
 				return done( null, false, { 
 					message: 'Something really messed up' 

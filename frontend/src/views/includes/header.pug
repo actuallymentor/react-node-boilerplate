@@ -6,10 +6,8 @@ html
 	body
 		nav.nav-wrapper
 			a.brand-logo Logo
-			ul#nav-mobile.right.hide-on-med-and-down
-				li
-					a( href='#' ) Home
-				li
-					a.modal-trigger( href='#loginmodal' ) Login / Register
-				li
-					a( href='#' ) Contact
+			ul#nav.right.hide-on-med-and-down
+				li#loggedoutmenu
+					a.modal-trigger#loginmenubutton( href='#loginmodal' ) Login / Register
+				li#loggedinmenu.hide
+					a#logoutmenubutton( href='#' ) Logout
