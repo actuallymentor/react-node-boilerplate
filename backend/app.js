@@ -12,6 +12,9 @@ app.use( '/', require( __dirname + '/routes/ping' ) )
 // Login management
 app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 
+// Registration
+app.use( '/register/', require( __dirname + '/routes/registration' ) )
+
 // Listen for requests
 var server = app.listen ( 3000, () => {
 	console.log( 'App listening on port: ' + server.address().port )
