@@ -1,8 +1,9 @@
 // Get express set up
-var express 	= require( 'express' )
-var app 		= express()
+var express 	  = require( 'express' )
+var app 		    = express()
 var bodyParser 	= require( 'body-parser' ) // POST body parser
-var session 	= require( 'express-session' )
+var session 	  = require( 'express-session' )
+var cookie      = require( 'cookie-parser' )
 
 // Timestamp and request processing
 app.use( function logger (req, res, next) {
@@ -13,6 +14,9 @@ app.use( function logger (req, res, next) {
 // Set the static to the public folder
 app.use( express.static( __dirname + '/../../frontend/public' ) )
 
+// Set cookie usage
+app.use( cookie( 'super mega ukulele' ) )
+
 // Add post body processing
 app.use( bodyParser.urlencoded( {extended: true} ) )
 
@@ -20,9 +24,9 @@ app.use( bodyParser.urlencoded( {extended: true} ) )
 app.use( session( {
   secret: 'super mega ukulele',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { 
-  	secure: true,
+  	secure: false,
   	maxAge: 1000 * 60 * 60 // One hour
   	 }
 } ) )

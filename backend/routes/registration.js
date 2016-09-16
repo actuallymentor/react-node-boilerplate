@@ -17,7 +17,11 @@ router.route( '/new' )
 		if ( error ) {
 			res.status( 418	).send( error )
 		} else {
-			res.send( 'User ' + user.email + ' registered successfully' )
+			// res.send( 'User ' + user.email + ' registered successfully' )
+			req.login( user, (err) => {
+				if ( err ) { return next( err ) }
+					return res.send( 'User ' + user.email + ' registered successfully' )
+			} )
 		}
 	} )
 
