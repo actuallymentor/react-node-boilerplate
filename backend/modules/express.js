@@ -4,6 +4,7 @@ var app 		    = express(  )
 var bodyParser 	= require( 'body-parser' ) // POST body parser
 var session 	  = require( 'express-session' )
 var cookie      = require( 'cookie-parser' )
+var help = require( __dirname + '/helpers' )
 
 // Timestamp and request processing
 app.use( function logger (req, res, next) {
@@ -26,8 +27,8 @@ app.use( session( {
   resave: false,
   saveUninitialized: false,
   cookie: { 
-  	secure: process.env.cookieSecure,
-  	maxAge: process.env.cookieMaxage
+  	secure: help.boolean( process.env.cookieSecure ),
+  	maxAge: Number( process.env.cookieMaxage )
   	 }
 } ) )
 

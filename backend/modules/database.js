@@ -2,7 +2,12 @@
 var db = {
 	mod: {}
 }
+
+// Get encryption
 var bcrypt = require( 'bcrypt-nodejs' )
+
+// Get helpers
+var help = require( __dirname + '/helpers' )
 
 // Set up sql
 var Sequelize = require( 'sequelize' )
@@ -10,7 +15,7 @@ db.conn = new Sequelize( process.env.dbName, process.env.dbUser, process.env.dbP
 	host: process.env.dbHost,
 	dialect: process.env.dbDialect,
 	define: {
-		timestamps: process.env.dbTimestamps
+		timestamps: help.boolean( process.env.dbTimestamps )
 	}
 } )
 

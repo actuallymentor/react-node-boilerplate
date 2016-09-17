@@ -13,6 +13,6 @@ app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 app.use( '/register/', require( __dirname + '/routes/registration' ) )
 
 // Listen for requests
-var server = app.listen ( process.env.port, () => {
+var server = app.listen ( Number( process.env.port ), () => {
 	console.log( 'App listening on port: ' + server.address().port )
 } )
