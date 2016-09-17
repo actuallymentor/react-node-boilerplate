@@ -1,6 +1,6 @@
 // Get express set up
 var express 	  = require( 'express' )
-var app 		    = express()
+var app 		    = express(  )
 var bodyParser 	= require( 'body-parser' ) // POST body parser
 var session 	  = require( 'express-session' )
 var cookie      = require( 'cookie-parser' )
@@ -15,25 +15,21 @@ app.use( function logger (req, res, next) {
 app.use( express.static( __dirname + '/../../frontend/public' ) )
 
 // Set cookie usage
-app.use( cookie( 'super mega ukulele' ) )
+app.use( cookie( process.env.cookieSecret ) )
 
 // Add post body processing
 app.use( bodyParser.urlencoded( {extended: true} ) )
 
 // Enable sessions
 app.use( session( {
-  secret: 'super mega ukulele',
+  secret: process.env.sessionSecret,
   resave: false,
   saveUninitialized: false,
   cookie: { 
-  	secure: false,
-  	maxAge: 1000 * 60 * 60 // One hour
+  	secure: process.env.cookieSecure,
+  	maxAge: process.env.cookieMaxage
   	 }
 } ) )
-
-app.all( '/ping', ( req, res ) => {
-	res.send( 'pong' )
-})
 
 console.log( 'Express module imported' )
 module.exports = app

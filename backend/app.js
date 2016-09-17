@@ -6,9 +6,6 @@ var app = require( './modules/express' )
 // Connect, sync and import database models
 var db = require( './modules/database' )
 
-// Router ping
-app.use( '/', require( __dirname + '/routes/ping' ) )
-
 // Login management
 app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 
@@ -16,6 +13,6 @@ app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 app.use( '/register/', require( __dirname + '/routes/registration' ) )
 
 // Listen for requests
-var server = app.listen ( 3000, () => {
+var server = app.listen ( process.env.port, () => {
 	console.log( 'App listening on port: ' + server.address().port )
 } )

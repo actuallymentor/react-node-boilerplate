@@ -6,11 +6,11 @@ var bcrypt = require( 'bcrypt-nodejs' )
 
 // Set up sql
 var Sequelize = require( 'sequelize' )
-db.conn = new Sequelize( 'Mentor', 'postgres', 'postgres', {
-	host: 'localhost',
-	dialect: 'postgres',
+db.conn = new Sequelize( process.env.dbName, process.env.dbUser, process.env.dbPass, {
+	host: process.env.dbHost,
+	dialect: process.env.dbDialect,
 	define: {
-		timestamps: false
+		timestamps: process.env.dbTimestamps
 	}
 } )
 
@@ -28,20 +28,20 @@ db.User = db.conn.define( 'user', {
 	}
 })
 
-bcrypt.hash("bacon", null, null, function(err, hash) {
-    // Store hash in your password DB.
-});
+var demoUser = ( email, pass ) => {
+	bcrypt.hash(pass, null, null, function(err, hash) {
+		db.User.create( {
+			email: email,
+			password: hash
+		} ).then( ( user ) => {
+			console.log( 'Created ' + user.email + ' with pass ' + user.password )
+		} )
+	})	
+}
 
 // Synchronise with database
-db.conn.sync( {force: true} ) .then( (  ) => {
-	bcrypt.hash("ohnoplaintext", null, null, function(err, hash) {
-    db.User.create( {
-		email: 'mentor@palokaj.co',
-		password: hash
-	} ).then( ( user ) => {
-		console.log( 'Created ' + user.email + ' with pass ' + user.password )
-	} )
-	})	
+db.conn.sync( {force: process.env.dbForce} ) .then( (  ) => {
+	demoUser( 'mentor@palokaj.co', 'ohnoplaintext' )
 	
 } ).then( (  ) => {
 	console.log ( 'Database sync succeeded' )
