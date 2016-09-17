@@ -45,8 +45,8 @@ var demoUser = ( email, pass ) => {
 }
 
 // Synchronise with database
-db.conn.sync( {force: process.env.dbForce} ) .then( (  ) => {
-	demoUser( 'mentor@palokaj.co', 'ohnoplaintext' )
+db.conn.sync( {force: help.boolean( process.env.dbForce )} ) .then( (  ) => {
+	demoUser( 'mentor@palokaj.co', 'pass' )
 	
 } ).then( (  ) => {
 	console.log ( 'Database sync succeeded' )
