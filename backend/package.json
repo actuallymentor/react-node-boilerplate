@@ -4,7 +4,8 @@
   "description": "Skeleton project for apps",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,14 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.15.2",
+    "chai": "3.5.0",
     "cookie-parser": "1.4.3",
     "express": "4.14.0",
     "express-session": "1.14.1",
+    "mocha": "3.0.2",
     "passport": "0.3.2",
     "passport-local": "1.0.0",
+    "request": "2.74.0",
     "sequelize": "3.24.2"
   }
 }

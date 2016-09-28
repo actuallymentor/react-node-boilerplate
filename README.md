@@ -8,15 +8,19 @@ Goals:
 In progress, forgive the sparse documentation.
 
 Environment variables:
-* port
-* dbHost
-* dbDialect
-* dbName
-* dbUser
-* dbPass
-* dbForce (boolean)
-* dbTimestamps ( boolean )
-* cookieSecret
-* cookieMaxage
-* cookieSecure ( boolean )
-* sessionSecret
+
+```shell
+export port=8080
+export dbHost='localhost'
+export dbDialect='postgres'
+export dbName'app'
+export dbUser'app'
+export dbPass'app'
+export dbForce=true
+export dbTimestamps=true
+export cookieSecret='super mega ukulele'
+export cookieMaxage=3600000
+export cookieSecure=false
+export sessionSecret='super mega ukulele'
+export appURL='http://www.web.dev'
+```
