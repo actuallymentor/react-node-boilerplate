@@ -11,11 +11,11 @@ Environment variables:
 
 ```shell
 export port=8080
-export dbHost='localhost'
-export dbDialect='postgres'
-export dbName'app'
-export dbUser'app'
-export dbPass'app'
+export dbHost=localhost
+export dbDialect=postgres
+export dbName=app
+export dbUser=app
+export dbPass=app
 export dbForce=true
 export dbTimestamps=true
 export cookieSecret='super mega ukulele'
