@@ -1,11 +1,16 @@
 # Webapp skeleton
 
-Goals:
+Frontend:
+* MaterializeCSS
+* jQuery ( modular setup with gulp )
+* SASS (  compiled to gulp )
+* PUG as view structure ( compiled with gulp )
 
-* Frontend using materialize, compiled in gulp
-* Backend in NodeJS with Sequelize and passport auth
-
-In progress, forgive the sparse documentation.
+Backend:
+* NodeJS + Express
+* Sequelize with postgres
+* Passport with local strategy
+* Testing with Mocha
 
 Environment variables:
 
@@ -24,3 +29,8 @@ export cookieSecure=false
 export sessionSecret='super mega ukulele'
 export appURL='http://www.web.dev'
 ```
+
+
+This repository was a little experiment in building a simple web app structure with a separate frontend codebase and backend codebase ( no server side rendering ).
+
+I haven't used it to build anything serious, but might use it for some quick and dirty hackathon projects.
