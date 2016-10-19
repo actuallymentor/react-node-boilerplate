@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "start": "gulp clean; gulp build; nodemon app.js"
+    "start": "gulp clean; gulp build; nodemon app.js",
+    "postinstall": "cp node_modules/materialize-css/js/date_picker/picker.js node_modules/materialize-css/bin"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.1.1",
@@ -48,6 +50,7 @@
     "mocha": "^3.1.2",
     "request": "^2.75.0",
     "rimraf": "^2.5.4",
+    "velocity-animate": "^1.2.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"

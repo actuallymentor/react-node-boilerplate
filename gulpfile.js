@@ -9,17 +9,20 @@ const pug 		 = require( 'gulp-pug' )
 const watch 	 = require( 'gulp-watch' )
 const uglify 	 = require( 'gulp-uglify' )
 const uglifycss  = require( 'gulp-uglifycss' )
+const gulpif 	 = require( 'gulp-if' )
 const browserify = require( 'browserify' )
 const watchify	 = require( 'watchify' )
 const source     = require( 'vinyl-source-stream' )
 const buffer 	 = require( 'vinyl-buffer' )
 
+// Import environment
+var dotenv = require( 'dotenv' )
+dotenv.load()
+
 // Error handling
 function swallowError (error) {
-
   // Details of the error in the console
   console.log( error.toString() )
-
   this.emit( 'end' )
 }
 
@@ -61,7 +64,7 @@ gulp.task( 'styles', ( cb ) => {
 	.pipe( sass() )
 	.on( 'error', swallowError )
 	.pipe( concat('styles.css') )
-	.pipe( uglifycss({}) )
+	.pipe( gulpif( (process.env.compress == 'true'), uglifycss({}) ) )
 	.on( 'error', swallowError )
 	.pipe( sourcemaps.write('.') )
 	.pipe( gulp.dest( paths.build.css ) )
@@ -101,7 +104,7 @@ function bundle() {
 	.pipe( source('app.js') )
 	.pipe( buffer() )
 	.pipe( sourcemaps.init({loadMaps: true}) )
-	.pipe( uglify() )
+	.pipe( gulpif( (process.env.compress == 'true'), uglify() ) )
 	.pipe( sourcemaps.write('.') )
 	.pipe( gulp.dest(paths.build.js) )
 	.on( 'end', () => {
@@ -144,8 +147,7 @@ gulp.task('build', ['clean','materialize' ,'styles', 'scripts-init', 'views'], (
 // Watch the source directory for changes and compile when changes are detected
 gulp.task( 'watch', ['clean'], () => {
 	gulp.start( 'build' )
-	gulp.watch( paths.source.styles, ['styles'] )
-	gulp.watch( paths.source.fonts, ['fonts'] )
+	gulp.watch( paths.source.styles.root + '/*', ['styles'] )
 	gulp.watch( paths.source.pug, ['views'] )
-	gulp.start( 'scripts-watch' )
+	gulp.watch( paths.source.js + '/*', bundle )
 } )

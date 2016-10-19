@@ -1,4 +1,6 @@
-let userSessionControl = function (  ) {
+var debug = require ( './debugging' )
+
+module.exports = function (  ) {
 	
 	// Login form console
 	debug.log( 'Loginform init' )
@@ -147,14 +149,3 @@ let userSessionControl = function (  ) {
 	}
 	
 }
-
-$( document ).ready(  DOM => {
-	debug.log( 'Session control checking in ' )
-
-	// Manage the interface
-	var userManager = new userSessionControl(  )
-	userManager.updateGlobalUI(  )
-	userManager.triggers(  )
-	userManager.dynamicUpdate(  )
-	
-} )
