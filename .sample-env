@@ -1,0 +1,14 @@
+port=8000
+dbHost=localhost
+dbDialect=postgres
+dbName=mentor
+dbUser=mentor
+dbPass=mentor
+dbForce=true
+dbTimestamps=true
+cookieSecret='super mega ukulele'
+cookieMaxage=3600000
+cookieSecure=false
+sessionSecret='super mega ukulele'
+appURL='http://www.web.dev'
+compress=false
