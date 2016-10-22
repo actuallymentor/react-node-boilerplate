@@ -1,8 +1,18 @@
 console.log('Main checking in')
-let $ = require( 'jQuery' )
+import React from 'react'
+import ReactDOM from 'react-dom'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import NavigationAppBar from './appbar.js'
 
-// After DOM load
-$( document ).ready(  ( DOM ) => {
-	// $('.modal-trigger').leanModal();	// Init materialize modal functionality
-	console.log('Central')
-} )
+const App = () => (
+	<MuiThemeProvider>
+		<header>
+			<NavigationAppBar />
+		</header>
+	</MuiThemeProvider>
+	)
+
+ReactDOM.render(
+	<App />,
+	document.getElementById('container')
+	);

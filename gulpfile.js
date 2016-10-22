@@ -32,8 +32,8 @@ const paths = {
 		root: 	__dirname,
 		styles: {
 			root: __dirname + '/frontend/src/styles/',
-			materialize: __dirname + '/node_modules/materialize-css/dist/'
-		},
+			mui: __dirname + '/node_modules/muicss/dist/css/mui.css'
+					},
 		js: __dirname + '/frontend/src/scripts/',
 		pug: 	__dirname + '/frontend/src/views/**/*.pug',
 		fonts: __dirname + '/frontend/src/fonts/**/*'
@@ -71,15 +71,10 @@ gulp.task( 'styles', ( cb ) => {
 } )
 
 // Dependencies
-gulp.task( 'materialize', ( cb ) => {
-	// Get materialize css
-	gulp.src(paths.source.styles.materialize + 'css/materialize.css')
+gulp.task( 'mui', ( cb ) => {
+	// Get mui css
+	return gulp.src(paths.source.styles.mui)
 	.pipe(gulp.dest(paths.source.styles.root))
-
-	// Get materialize fonts
-	gulp.src(paths.source.styles.materialize + 'fonts/roboto/*')
-	.pipe(gulp.dest(paths.build.fonts + '/roboto'))
-	return
 } )
 
 
@@ -92,7 +87,7 @@ browser = browser || watchify(
 		fullPaths: true
 	} )
 	.transform("babelify", {
-		presets: ["es2015"]
+		presets: ["es2015", "react"]
 	})
 	)
 // Compiling and writing scripts, they are all combined into one all.js file
@@ -122,7 +117,7 @@ gulp.task( 'scripts-init', () => {
 		fullPaths: true
 	} )
 	.transform("babelify", {
-		presets: ["es2015"]
+		presets: ["es2015", "react"]
 	})
 	.bundle()
 	.on( 'error', swallowError )
@@ -142,12 +137,12 @@ gulp.task( 'views', ( cb ) => {
 } )
 
 // Have one task that completes all build tasks
-gulp.task('build', ['clean','materialize' ,'styles', 'scripts-init', 'views'], () => {})
+gulp.task('build', ['clean','mui' ,'styles', 'scripts-init', 'views'], () => {})
 
 // Watch the source directory for changes and compile when changes are detected
 gulp.task( 'watch', ['clean'], () => {
 	gulp.start( 'build' )
 	gulp.watch( paths.source.styles.root + '/*', ['styles'] )
 	gulp.watch( paths.source.pug, ['views'] )
-	gulp.watch( paths.source.js + '/*', bundle )
+	gulp.watch( paths.source.js + '**/*.js', bundle )
 } )
