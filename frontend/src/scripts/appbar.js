@@ -9,7 +9,7 @@ injectTapEventPlugin()
 export default class NavigationAppBar extends React.Component {
     render() {
     	return (
-    		<AppBar title="Amazing App">
+    		<AppBar title="Super Amazing App">
     		</AppBar>
     		)
     }

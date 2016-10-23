@@ -1,4 +1,4 @@
-console.log('Main checking in')
+console.log('Main js loaded')
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -16,4 +16,4 @@ const App = () => (
 ReactDOM.render(
 	<App />,
 	document.getElementById('container')
-	);
+	)
