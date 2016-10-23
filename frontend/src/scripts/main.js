@@ -3,6 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import NavigationAppBar from './appbar.js'
+require("../styles/styles.scss")
 
 const App = () => (
 	<MuiThemeProvider>
