@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "start": "gulp clean; gulp build; nodemon app.js"
+    "start": "webpack -d; nodemon app.js"
   },
   "repository": {
     "type": "git",
