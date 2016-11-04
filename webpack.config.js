@@ -2,7 +2,7 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 module.exports = {
   entry: __dirname + '/frontend/src/scripts/main.js',
   output: {
-    filename: __dirname + '/frontend/public/js/app.js'       
+    filename: __dirname + '/frontend/public/js/app.js'
   },
   module: {
     loaders: [
@@ -20,12 +20,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new BrowserSyncPlugin({
-      // browse to http://localhost:3000/ during development, 
-      // ./public directory is being served 
+    new BrowserSyncPlugin( {
       host: 'localhost',
       port: 3000,
       server: { baseDir: ['frontend/public'] }
-    })
+    } )
   ]
 }

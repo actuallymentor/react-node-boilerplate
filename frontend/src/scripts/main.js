@@ -1,19 +1,19 @@
 console.log('Main js loaded')
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import NavigationAppBar from './appbar.js'
-require("../styles/styles.scss")
+import { Menu, Header } from './modules/head.js'
+import '../styles/styles.scss'
 
-const App = () => (
-	<MuiThemeProvider>
-		<header>
-			<NavigationAppBar />
-		</header>
-	</MuiThemeProvider>
-	)
+class App extends React.Component {
+	render(  ) {
+		return (
+			<header>
+				<Menu />
+				<Header />
+			</header>
+			)
+	}
+}
 
-ReactDOM.render(
-	<App />,
-	document.getElementById('container')
-	)
+
+ReactDOM.render( <App />, document.getElementById('container') )
