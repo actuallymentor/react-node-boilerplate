@@ -21,13 +21,13 @@ export const PanelView = ( { items, visible, toggle, name, logo } ) => {
 			    <span className = "hamburger-inner"></span>
 			  </span>
 			</button>
-			<span className="depth" id = "identity">
+			<a href = "/" className = "depth" id = "identity">
 				<img
 					id = "logo"
 					src= { logo }
 					className = { logo ? "" : "hide" } />
 				 { name }
-			</span>
+			</a>
 			<nav className = {
 				"shawow " +  ( visible ? 'full absolute-show' : 'full absolute-out-right' )
 			 } >

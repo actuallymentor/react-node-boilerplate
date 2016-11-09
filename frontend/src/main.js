@@ -1,9 +1,16 @@
 console.log('Main js loaded')
 import React from 'react'
 import ReactDOM from 'react-dom'
+
+// Visual elements
 import { Panel, Header } from './state/head'
 import { Main, Section } from './state/body'
+import Footer from './stateless/footer-views'
+
+// Css
 import './styles/styles.scss'
+
+// Placeholder text
 import Lorem from './stateless/lorem-ipsum-view'
 
 class App extends React.Component {
@@ -12,7 +19,7 @@ class App extends React.Component {
 			{ name: 'Home', link: '/' }
 		]
 		return (
-			<div>
+			<div className = "flexify">
 				<header>
 					<Panel
 						id= "menu"
@@ -29,9 +36,9 @@ class App extends React.Component {
 				<Main>
 					<Section content = { <Lorem /> } />
 				</Main>
-				<footer>
-
-				</footer>
+				<Footer
+					owner = "Mentor Palokaj"
+				 />
 			</div>
 			)
 	}
