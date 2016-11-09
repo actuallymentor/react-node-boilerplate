@@ -1,10 +1,9 @@
-# Webapp skeleton
+# React.js + Node.js minimalistic boilerplate
 
 Frontend:
-* MaterializeCSS
-* jQuery ( modular setup with gulp )
-* SASS (  compiled to gulp )
-* PUG as view structure ( compiled with gulp )
+* React.js
+* SASS
+* Webpack compilation
 
 Backend:
 * NodeJS + Express
@@ -32,5 +31,3 @@ export appURL='http://www.web.dev'
 
 
 This repository was a little experiment in building a simple web app structure with a separate frontend codebase and backend codebase ( no server side rendering ).
-
-I haven't used it to build anything serious, but might use it for some quick and dirty hackathon projects.
