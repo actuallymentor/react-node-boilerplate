@@ -1,8 +1,8 @@
 import React from 'react'
-import { MenuS, HeaderS } from '../stateless/head'
+import { PanelView, HeaderView } from '../stateless/head-views'
 
 // The menu logic
-export class Menu extends React.Component {
+export class Panel extends React.Component {
 	constructor ( props ) {
 		super ( props )
 		this.state = {
@@ -19,11 +19,14 @@ export class Menu extends React.Component {
 	}
 	render(  ) {
 		return (
-			<div>
-				<MenuS
+			<div id = {this.props.id}>
+				<PanelView
 					toggle = {this.toggle}
 					visible = {this.state.visible}
-					items = {this.props.items} />
+					items = {this.props.items}
+					name =  {this.props.name}
+					logo =  {this.props.logo}
+				 />
 			</div> )
 	}
 }
@@ -32,6 +35,12 @@ export class Menu extends React.Component {
 // The header logic
 export class Header extends React.Component {
 	render(  ) {
-		return <div>I am a header</div>
+		return  (
+			<HeaderView
+				id =  { this.props.id }
+				title = { this.props.title }
+				subtitle = { this.props.subtitle }
+		 	/>
+		 )
 	}
 }
