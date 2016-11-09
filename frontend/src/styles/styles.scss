@@ -31,28 +31,11 @@ $hamburger-padding-y: $top-padding;
 @import "./hamburgers/hamburgers.scss";
 
 // Mobile definitions
-$mq-mobile-portrait: 320px !default;
-$mq-mobile-landscape: 480px !default;
-$mq-tablet-portrait: 768px !default;
-$mq-tablet-landscape: 1024px !default;
-$mq-desktop: 1382px !default;
-@mixin mobile {
-	@media (max-width : $mq-mobile-landscape) {
-		@content;
-	}
-}
-@mixin tablet {
-	@media only screen and (min-width : $mq-mobile-landscape + 1) {
-		@content;
-	}
-}
-@mixin desktop{
-	@media only screen and (min-width : $mq-tablet-landscape + 1) {
-		@content;
-	}
-}
-@mixin retina {
-	@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+$mobile: 320px;
+$tablet: 768px;
+$laptop: 1024px;
+@mixin min-size ( $size )  {
+	@media screen and (min-width : $size) {
 		@content;
 	}
 }
@@ -211,21 +194,19 @@ body  {
 
 // Container definitions
 .container  {
-	@include retina (  )  {
-		width: 60%;
-		margin: 50px 20%;
-	}
-	@include desktop (  )  {
-		width: 70%;
-		margin: 50px 15%;
-	}
-	@include tablet (  )  {
-		width: 80%;
-		margin: 30px 10%;
-	}
-	@include mobile (  )  {
+	width: 100%;
+	margin: 50px 0;
+	@include min-size ( $mobile )  {
 		width: 100%;
-		margin: 20px 0;
+		margin: 10px 0;
+	}
+	@include min-size ( $tablet )  {
+		width: 80%;
+		margin: 10px 10%;
+	}
+	@include min-size ( $laptop )  {
+		width: 50%;
+		margin: 50px 25%;
 	}
 }
 section  {
