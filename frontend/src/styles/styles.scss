@@ -115,6 +115,50 @@ body  {
 	margin: 0;
 }
 
+// Typography
+$breakpoints: (
+  small : 480px,
+  medium: 768px,
+  large : 1024px
+);
+
+$p-font-sizes: (
+  null  : 15px,
+  small : 16px,
+  medium: 17px,
+  large : 19px
+);
+
+$h1-font-sizes: (
+  null  : 28px,
+  small : 31px,
+  medium: 33px,
+  large : 46px
+);
+@mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+h1  {
+	@include font-size ( $h1-font-sizes )
+}
+p {
+  @include font-size($p-font-sizes);
+}
+
 // Menu styles
 #menu  {
 	#identity  {
