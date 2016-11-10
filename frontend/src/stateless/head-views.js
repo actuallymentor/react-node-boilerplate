@@ -2,14 +2,7 @@
 import React from 'react'
 
 // Define a menu rendering component that takes props
-export const PanelView = ( { items, visible, toggle, name, logo } ) => {
-	let menuitems = items.map ( ( item, index ) => {
-		return (
-			<a className = "depth menuitem" key = { index } href = { item.link}  >
-				<li> {item.name} </li>
-			</a>
-			)
-	} )
+export const PanelView = ( { children, visible, toggle, name, logo } ) => {
 	// Fill the <nav><ul> element with the above <li>'s
 	return (
 		<span>
@@ -21,25 +14,53 @@ export const PanelView = ( { items, visible, toggle, name, logo } ) => {
 			    <span className = "hamburger-inner"></span>
 			  </span>
 			</button>
-			<a href = "/" className = "depth" id = "identity">
-				<img
-					id = "logo"
-					src= { logo }
-					className = { logo ? "" : "hide" } />
-				 { name }
-			</a>
 			<nav className = { visible ? 'full absolute-show' : 'full absolute-out-right' } >
-				<h3 id = "menutitle" >Navigation</h3>
-				<ul>
-					{menuitems}
-				</ul>
+				<h3 className = "depth" id = "menutitle" >Navigation</h3>
+				{ children }
 			</nav>
 		</span>
-		)
+	)
 }
 
-export const HeaderView =  ( { id, title, subtitle } )  => (
+// Menu items
+export const MenuView = ( { links, register } )  =>  {
+	// Generate menu list from items array
+	let menuitems = links.map ( ( item, index ) => {
+		return (
+			<a className = "depth menuitem" key = { index } href = { item.link }  >
+				<li> {item.name} </li>
+			</a>
+		)
+	} )
+	return (
+		<ul>
+			{menuitems}
+			<li className = "depth menuitem" onClick = { register } > Register </li>
+		</ul>
+	)
+}
+
+// User actions
+export const AccountView = props => {
+	return (
+		<span id = "accountform">
+			<p className = "white center">Register an account:</p>
+			<input placeholder = "Email" id = "email" type = "text" />
+			<input placeholder = "Password" id = "password" type = "password" />
+			<button className = "depth"> Register </button>
+		</span>
+	)
+}
+
+export const HeaderView =  ( { id, title, subtitle, name, logo } )  => (
 	<div id = { id } className = "valign" >
+		<a href = "/" className = "depth" id = "identity">
+			<img
+				id = "logo"
+				src= { logo }
+				className = { logo ? "" : "hide" } />
+			 { name }
+		</a>
 		<h1 id = "title" className="depth nomar" >
 			 { title }
 		</h1>
@@ -47,4 +68,4 @@ export const HeaderView =  ( { id, title, subtitle } )  => (
 			 { subtitle }
 		</p>
 	</div>
-	)
+)

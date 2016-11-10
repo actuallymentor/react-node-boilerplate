@@ -111,65 +111,59 @@ body  {
 .white  {
 	color: white;
 }
+.center {
+	text-align: center;
+}
 .nomar  {
 	margin: 0;
 }
 
 // Typography
 $breakpoints: (
-  small : 480px,
-  medium: 768px,
-  large : 1024px
-);
+	small : 480px,
+	medium: 768px,
+	large : 1024px
+	);
 
 $p-font-sizes: (
-  null  : 15px,
-  small : 16px,
-  medium: 17px,
-  large : 19px
-);
+	null  : 15px,
+	small : 16px,
+	medium: 17px,
+	large : 19px
+	);
 
 $h1-font-sizes: (
-  null  : 28px,
-  small : 31px,
-  medium: 33px,
-  large : 46px
-);
+	null  : 28px,
+	small : 31px,
+	medium: 33px,
+	large : 46px
+	);
 @mixin font-size($fs-map, $fs-breakpoints: $breakpoints) {
-  @each $fs-breakpoint, $fs-font-size in $fs-map {
-    @if $fs-breakpoint == null {
-      font-size: $fs-font-size;
-    }
-    @else {
+	@each $fs-breakpoint, $fs-font-size in $fs-map {
+		@if $fs-breakpoint == null {
+			font-size: $fs-font-size;
+		}
+		@else {
       // If $fs-font-size is a key that exists in
       // $fs-breakpoints, use the value
       @if map-has-key($fs-breakpoints, $fs-breakpoint) {
-        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      	$fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
       }
       @media screen and (min-width: $fs-breakpoint) {
-        font-size: $fs-font-size;
+      	font-size: $fs-font-size;
       }
-    }
   }
+}
 }
 h1  {
 	@include font-size ( $h1-font-sizes )
 }
 p {
-  @include font-size($p-font-sizes);
+	@include font-size($p-font-sizes);
 }
 
 // Menu styles
 #menu  {
-	#identity  {
-		position: absolute;
-		left: 0;
-		top: 0;
-		padding: $top-padding;
-		text-decoration: none;
-		color: $accent-color;
-		opacity: 0.7;
-	}
 	nav {
 		background-color: $menu-background;
 		z-index: 1;
@@ -183,7 +177,6 @@ p {
 		#menutitle  {
 			text-align: center;
 			color: white;
-			font-family: sans-serif;
 			font-size: 2rem;
 		}
 		ul  {
@@ -194,10 +187,33 @@ p {
 			.menuitem  {
 				// Font styling
 				font-size: 1.5rem;
-				font-family: sans-serif;
-				text-decoration: none;
 				color: white;
-				font-style: italic;
+				text-decoration: underline;
+				cursor: pointer;
+				margin: 10px 0;
+			}
+		}
+		#accountform {
+			display: flex;
+			flex-direction: column;
+			padding: 0 2%;
+			@include min-size ( $mobile )  {
+				padding: 0 2%;
+			}
+			@include min-size ( $tablet )  {
+				padding: 0 20%;
+			}
+			@include min-size ( $laptop )  {
+				padding: 0 40%;
+			}
+			input, button {
+				margin: 10px 0;
+				padding: 10px 5px;
+				border: none;
+				text-align: center;
+				&:hover {
+					@include hover-element( $hover-speed )
+				}
 			}
 		}
 	}
@@ -228,6 +244,15 @@ p {
 	min-height: 300px;
 	background-color: $header-background;
 	flex-direction: column;
+	#identity  {
+		position: absolute;
+		left: 0;
+		top: 0;
+		padding: $top-padding;
+		text-decoration: none;
+		color: $accent-color;
+		opacity: 0.7;
+	}
 	#title  {
 		color: $accent-color;
 	}
