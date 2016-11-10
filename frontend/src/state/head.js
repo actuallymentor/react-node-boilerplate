@@ -21,11 +21,11 @@ export class Panel extends React.Component {
 		return (
 			<div id = {this.props.id}>
 				<PanelView
-					toggle = {this.toggle}
+					toggle 	= {this.toggle}
 					visible = {this.state.visible}
-					items = {this.props.items}
-					name =  {this.props.name}
-					logo =  {this.props.logo}
+					items 	= {this.props.items}
+					name 	=  {this.props.name}
+					logo 	=  {this.props.logo}
 				 />
 			</div> )
 	}
@@ -37,8 +37,8 @@ export class Header extends React.Component {
 	render(  ) {
 		return  (
 			<HeaderView
-				id =  { this.props.id }
-				title = { this.props.title }
+				id 		 =  { this.props.id }
+				title 	 = { this.props.title }
 				subtitle = { this.props.subtitle }
 		 	/>
 		 )

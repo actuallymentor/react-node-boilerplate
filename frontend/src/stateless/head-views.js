@@ -28,9 +28,7 @@ export const PanelView = ( { items, visible, toggle, name, logo } ) => {
 					className = { logo ? "" : "hide" } />
 				 { name }
 			</a>
-			<nav className = {
-				"shawow " +  ( visible ? 'full absolute-show' : 'full absolute-out-right' )
-			 } >
+			<nav className = { visible ? 'full absolute-show' : 'full absolute-out-right' } >
 				<h3 id = "menutitle" >Navigation</h3>
 				<ul>
 					{menuitems}
@@ -41,19 +39,12 @@ export const PanelView = ( { items, visible, toggle, name, logo } ) => {
 }
 
 export const HeaderView =  ( { id, title, subtitle } )  => (
-	<div id = { id }
-				className = "valign"
-			>
-				<h1
-					id = "title"
-					className="depth nomar" >
-					 { title }
-				</h1>
-				<p
-					id = "subtitle"
-					className="depth"
-				>
-					 { subtitle }
-				</p>
-			</div>
+	<div id = { id } className = "valign" >
+		<h1 id = "title" className="depth nomar" >
+			 { title }
+		</h1>
+		<p id = "subtitle" className="depth" >
+			 { subtitle }
+		</p>
+	</div>
 	)

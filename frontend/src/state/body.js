@@ -13,8 +13,6 @@ export class Main extends React.Component  {
 
 export class Section extends React.Component  {
 	render (  )  {
-		return <SectionView
-			content = { this.props.content }
-		 />
+		return <SectionView content = { this.props.content } />
 	}
 }
