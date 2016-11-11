@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Define a menu rendering component that takes props
-export const PanelView = ( { children, visible, toggle, name, logo } ) => {
+export const PanelView = ( { children, visible, toggle, name, logo, action } ) => {
 	// Fill the <nav><ul> element with the above <li>'s
 	return (
 		<span>
@@ -15,7 +15,7 @@ export const PanelView = ( { children, visible, toggle, name, logo } ) => {
 			  </span>
 			</button>
 			<nav className = { visible ? 'full absolute-show' : 'full absolute-out-right' } >
-				<h3 className = "depth" id = "menutitle" >Navigation</h3>
+				<h3 className = "depth" id = "menutitle" >{ action }</h3>
 				{ children }
 			</nav>
 		</span>
@@ -23,7 +23,7 @@ export const PanelView = ( { children, visible, toggle, name, logo } ) => {
 }
 
 // Menu items
-export const MenuView = ( { links, register } )  =>  {
+export const MenuView = ( { links, register, login } )  =>  {
 	// Generate menu list from items array
 	let menuitems = links.map ( ( item, index ) => {
 		return (
@@ -36,6 +36,7 @@ export const MenuView = ( { links, register } )  =>  {
 		<ul>
 			{menuitems}
 			<li className = "depth menuitem" onClick = { register } > Register </li>
+			<li className = "depth menuitem" onClick = { login } > Login </li>
 		</ul>
 	)
 }
@@ -44,10 +45,10 @@ export const MenuView = ( { links, register } )  =>  {
 export const AccountView = props => {
 	return (
 		<span id = "accountform">
-			<p className = "white center">Register an account:</p>
 			<input placeholder = "Email" id = "email" type = "text" />
 			<input placeholder = "Password" id = "password" type = "password" />
-			<button className = "depth"> Register </button>
+			<button className = "depth ripple"> { props.action } </button>
+			<a className = "white mouse depth" onClick = { props.reset }> { String.fromCharCode(8592) } Back to menu</a>
 		</span>
 	)
 }
