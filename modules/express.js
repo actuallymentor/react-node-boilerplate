@@ -19,14 +19,14 @@ app.use( express.static( __dirname + '/../frontend/public' ) )
 app.use( cookie( process.env.cookieSecret ) )
 
 // Add post body processing
-app.use( bodyParser.urlencoded( {extended: true} ) )
+app.use( bodyParser.json(  ) )
 
 // Enable sessions
 app.use( session( {
   secret: process.env.sessionSecret,
   resave: false,
   saveUninitialized: false,
-  cookie: { 
+  cookie: {
   	secure: help.boolean( process.env.cookieSecure ),
   	maxAge: Number( process.env.cookieMaxage )
   	 }

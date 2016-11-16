@@ -1,5 +1,8 @@
 var expect    = require( "chai" ).expect
 var request	  = require( "request" )
+// Import environment
+var dotenv = require( 'dotenv' )
+dotenv.load()
 
 describe( 'Webserver status', (  ) => {
 	describe( '200 Status on GET /', (  ) => {

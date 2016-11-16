@@ -13,7 +13,7 @@ router.use( passport.session(  ) )
 
 // Login route
 router.route( '/local' )
-.post( passportLocal.authenticate( 'local'), ( req, res ) => {
+.post( passportLocal.authenticate( 'local' ), ( req, res ) => {
 	res.send ( req.user )
 } )
 
