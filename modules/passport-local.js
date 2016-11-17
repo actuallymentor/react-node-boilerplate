@@ -3,7 +3,7 @@ var passportLocal 	= require( __dirname + '/passport-global' )
 var LocalStrategy 	= require( 'passport-local' ).Strategy
 
 // Encryption library
-var bcrypt = require( 'bcrypt-nodejs' )
+var bcrypt = require( 'bcrypt' )
 
 // Import db connection
 var db	= require( __dirname + '/../modules/database' )

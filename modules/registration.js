@@ -2,10 +2,10 @@
 var db = require( __dirname + '/../modules/database' )
 
 // Encryption library
-var bcrypt = require( 'bcrypt-nodejs' )
+var bcrypt = require( 'bcrypt' )
 
 var register = ( email, password, callback ) => {
-	bcrypt.hash(password, null, null, (err, hash) => {
+	bcrypt.hash(password, 10, (err, hash) => {
 		db.User.findOne( {
 			where: {
 				email: email
@@ -27,7 +27,7 @@ var register = ( email, password, callback ) => {
 			}
 
 		} )
-	} )	
+	} )
 }
 
 module.exports = register
