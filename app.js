@@ -1,5 +1,3 @@
-console.log ( 'Initialising app' )
-
 // Import environment
 var dotenv = require( 'dotenv' )
 dotenv.load()
@@ -18,5 +16,9 @@ app.use( '/register/', require( __dirname + '/routes/registration' ) )
 
 // Listen for requests
 var server = app.listen ( Number( process.env.port ), () => {
-	console.log( 'App listening on port: ' + server.address().port )
+if ( process.env.NODE_ENV == 'development' )
+		console.log( 'App listening on port: ' + server.address().port )
 } )
+
+// For testing
+module.exports = app

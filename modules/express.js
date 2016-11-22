@@ -1,15 +1,15 @@
 // Get express set up
 var express 	  = require( 'express' )
-var app 		  = express(  )
-var bodyParser 	  = require( 'body-parser' ) // POST body parser
+var app 		    = express(  )
+var bodyParser 	= require( 'body-parser' ) // POST body parser
 var session 	  = require( 'express-session' )
-var cookie        = require( 'cookie-parser' )
-var help 		  = require( __dirname + '/helpers' )
+var cookie      = require( 'cookie-parser' )
+var dev 		    = require( __dirname + '/helpers' )
 
 // Timestamp and request processing
 app.use( function logger (req, res, next) {
-	console.log( req.method + ' ' + req.path + ' @ time: ', Date.now() )
-	next()
+  dev.log( req.method + ' ' + req.path + ' @ time: ', Date.now() )
+  next()
 })
 
 // Set the static to the public folder
@@ -27,10 +27,9 @@ app.use( session( {
   resave: false,
   saveUninitialized: false,
   cookie: {
-  	secure: help.boolean( process.env.cookieSecure ),
+  	secure: dev.bool( process.env.cookieSecure ),
   	maxAge: Number( process.env.cookieMaxage )
-  	 }
+  }
 } ) )
 
-console.log( 'Express module imported' )
 module.exports = app

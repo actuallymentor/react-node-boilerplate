@@ -5,36 +5,48 @@ var LocalStrategy 	= require( 'passport-local' ).Strategy
 // Encryption library
 var bcrypt = require( 'bcrypt' )
 
+// Get helpers
+var dev = require( __dirname + '/helpers' )
+
 // Import db connection
 var db	= require( __dirname + '/../modules/database' )
 
 // Login procedure with the database
 passportLocal.use( new LocalStrategy(
-	( username, password, done ) => {
-		console.log( 'Attempting login with ' + username + ' and ' + password )
+	// Set the default user field to email
+	{ usernameField: 'email' },
+	( email, password, done ) => {
+
+		// Verbose statement
+		dev.log( 'Attempting login with ' + email + ' and ' + password )
+
+		// Find the user reuested
 		db.User.findOne( {
 			where: {
-				email: username
+				email: email
 			}
 		} ).then( ( user ) => {
-			if( user == undefined ) {
-				console.log( 'User not found' )
+			if( !user ) {
+				dev.log( 'User not found' )
 				return done( null, false, {
-					message: 'Incorrect username or password'
+					message: 'Incorrect email or password'
 				} )
 			}
-			console.log( 'Found user ' + user.email )
+
+			// Verbose statement
+			dev.log( 'Found user ' + user.email )
+
+			// Check if the user from the db matches the POSTed user`
 			bcrypt.compare( password, user.password, ( err, res ) => {
-				console.log( 'Password evaluated ' + res )
+				dev.log( 'Password evaluated ' + res )
 				if ( res == true ) {
-					user.password = 'correct'
 					return done(null, user)
 				} else {
-				console.log( 'Something really messed up' )
-				return done( null, false, {
-					message: 'Something really messed up'
-				} )
-			}
+					dev.log( 'Something really messed up' )
+					return done( null, false, {
+						message: 'Something really messed up'
+					} )
+				}
 			} )
 		} )
 	} ) )
