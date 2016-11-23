@@ -4,7 +4,7 @@
   "description": "Skeleton project for apps",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec",
+    "test": "mocha",
     "start": "webpack --progress -d; nodemon app.js"
   },
   "repository": {

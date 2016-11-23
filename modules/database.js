@@ -34,14 +34,4 @@ db.User = db.conn.define( 'user', {
 })
 
 
-// Synchronise with database
-db.conn.sync( {force: dev.bool( process.env.dbForce )} ) .then( (  ) => {
-	( dev.bool( process.env.NODE_ENV == 'development' ) ) ? require( __dirname + '/data-seed'  ) : console.log( 'Production, not seeding database' )
-} ).then( (  ) => {
-	dev.log ( 'Database sync succeeded' )
-}, ( err ) => {
-	console.log('Database sync failed: ' + err)
-}
-)
-
 module.exports = db
