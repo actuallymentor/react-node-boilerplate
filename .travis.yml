@@ -1,9 +1,12 @@
+sudo: required
 language: node_js
 node_js:
   - "7"
   - "6"
 services:
   - postgresql
+before_install:
+  - npm install -g node-gyp
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 env:
