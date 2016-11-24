@@ -10,7 +10,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - webpack --progress -p
 env:
-  - verbose=true travis=true NODE_ENV=production
+  - verbose=true travis=true
 addons:
   apt:
     sources:
