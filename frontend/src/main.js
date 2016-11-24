@@ -15,22 +15,16 @@ import Lorem from './stateless/lorem-ipsum-view'
 
 class App extends React.Component {
 	render(  ) {
-		let menuItems = [
-			{ name: 'Home', link: '/' }
-		]
 		return (
 			<div className = "flexify">
 				<header>
-					<Panel
-						id= "menu"
-						items={menuItems}
-						name="Identity"
-						logo=""
-						/>
+					<Panel id= "menu" />
 					<Header
 						id = "header"
 						title = "Home"
 						subtitle = "Welcome stranger"
+						name="Identity"
+						logo=""
 					/>
 				</header>
 				<Main>

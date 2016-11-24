@@ -1,40 +1,55 @@
 // Import passport
-var passportLocal 		= require( __dirname + '/passport-global' )
-var LocalStrategy 	= require( 'passport-local' ).Strategy
+const passportLocal 	= require( __dirname + '/passport-global' )
+const LocalStrategy 	= require( 'passport-local' ).Strategy
 
 // Encryption library
-var bcrypt = require( 'bcrypt-nodejs' )
+const bcrypt = require( 'bcrypt' )
+
+// Get helpers
+const dev = require( __dirname + '/helpers' )
 
 // Import db connection
-var db		= require( __dirname + '/../modules/database' )
+const db	= require( __dirname + '/../modules/database' )
 
 // Login procedure with the database
 passportLocal.use( new LocalStrategy(
-	( username, password, done ) => {
-		console.log( 'Attempting login with ' + username + ' and ' + password )
-		db.User.findOne( { 
+
+	// Set the default user field to email instead of 'username'
+	{ usernameField: 'email' },
+	( email, password, done ) => {
+
+		// Debug statement
+		dev.log( 'Attempting login with ' + email + ' and ' + password )
+
+		// Find the user requested
+		db.User.findOne( {
 			where: {
-				email: username
+				email: email
 			}
 		} ).then( ( user ) => {
-			if( user == undefined ) {
-				console.log( 'User not found' )
-				return done( null, false, { 
-					message: 'Incorrect username or password' 
+
+			// If no matching user is found return errors
+			if( !user ) {
+				dev.log( 'User not found' )
+				return done( null, false, {
+					message: 'Incorrect email or password'
 				} )
 			}
-			console.log( 'Found user ' + user.email )
-			bcrypt.compare( password, user.password, ( err, res ) => {
-				console.log( 'Password evaluated ' + res )
-				if ( res == true ) {
-					user.password = 'correct'
+
+			// Debug statement
+			dev.log( 'Found user ' + user.email )
+
+			// Check if the user from the db matches the POSTed user`
+			bcrypt.compare( password, user.password, ( err, match ) => {
+				dev.log( 'Password evaluated ' + match )
+				if ( match ) {
 					return done(null, user)
 				} else {
-				console.log( 'Something really messed up' )
-				return done( null, false, { 
-					message: 'Something really messed up' 
-				} )
-			}
+					dev.log( 'Password did not match' )
+					return done( null, false, {
+						message: 'Password did not match'
+					} )
+				}
 			} )
 		} )
 	} ) )

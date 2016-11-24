@@ -1,22 +1,22 @@
-// Container object
-var db = {
-	mod: {}
-}
-
-// Get encryption
-var bcrypt = require( 'bcrypt-nodejs' )
-
 // Get helpers
-var help = require( __dirname + '/helpers' )
+const dev = require( __dirname + '/helpers' )
 
-// Set up sql
-var Sequelize = require( 'sequelize' )
+// Import environment
+const dotenv = require( 'dotenv' )
+dotenv.load()
+
+// Container object
+let db = {}
+
+// Set up database connection
+let Sequelize = require( 'sequelize' )
 db.conn = new Sequelize( process.env.dbName, process.env.dbUser, process.env.dbPass, {
 	host: process.env.dbHost,
 	dialect: process.env.dbDialect,
 	define: {
-		timestamps: help.boolean( process.env.dbTimestamps )
-	}
+		timestamps: dev.bool( process.env.dbTimestamps )
+	},
+	logging: dev.bool( process.env.dbLogging )
 } )
 
 //// Models
@@ -33,26 +33,5 @@ db.User = db.conn.define( 'user', {
 	}
 })
 
-var demoUser = ( email, pass ) => {
-	bcrypt.hash(pass, null, null, function(err, hash) {
-		db.User.create( {
-			email: email,
-			password: hash
-		} ).then( ( user ) => {
-			console.log( 'Created ' + user.email + ' with pass ' + user.password )
-		} )
-	})	
-}
-
-// Synchronise with database
-db.conn.sync( {force: help.boolean( process.env.dbForce )} ) .then( (  ) => {
-	demoUser( 'mentor@palokaj.co', 'pass' )
-	
-} ).then( (  ) => {
-	console.log ( 'Database sync succeeded' )
-}, ( err ) => {
-	console.log('Database sync failed: ' + err)
-} 
-)
 
 module.exports = db
