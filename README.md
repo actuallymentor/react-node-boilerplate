@@ -1,4 +1,5 @@
-# React.js + Node.js minimalistic boilerplate
+# React Node Boilerplate ![Build Status](https://travis-ci.org/actuallymentor/react-node-boilerplate.svg?branch=development)  ![GitHub version](https://badge.fury.io/gh/actuallymentor%2Freact-node-boilerplate.svg)
+--------------------
 
 **WORK IN PROGRESS**
 
