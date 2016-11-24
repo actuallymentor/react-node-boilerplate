@@ -5,15 +5,14 @@ let request	  = require( "supertest" )
 let server = require( __dirname + "/../app.js" )
 
 // Import environment
-if ( !process.env.travis ) {
-	let dotenv = require( 'dotenv' )
-	dotenv.load()
-}
+let dotenv = require( 'dotenv' )
+process.env.travis ? '' : dotenv.load()
+
 process.env.NODE_ENV = 'production'
 process.env.verbose = false
 
 // Test configs
-let verbose = false
+let verbose = true
 
 // Testing placeholder with the app
 let app = request( server )

@@ -1,6 +1,6 @@
 // Import environment
 var dotenv = require( 'dotenv' )
-dotenv.load()
+process.env.travis ? '' : dotenv.load()
 
 // Getting static express
 var app = require( './modules/express' )
