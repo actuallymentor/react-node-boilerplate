@@ -16,6 +16,8 @@ env:
   - compress=false
   - NODE_ENV=development
   - CXX=g++-4.8
+before_install:
+  - npm install -g npm@latest node-gyp@latest
 addons:
   apt:
     sources:
@@ -26,6 +28,7 @@ addons:
     - libgnome-keyring-dev
 language: node_js
 node_js:
+  - "7"
   - "6"
   - "5"
 services:
