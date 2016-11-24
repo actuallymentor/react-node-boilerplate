@@ -9,7 +9,7 @@ var dev = require( __dirname + '/../modules/helpers' )
 
 // Import environment
 let dotenv = require( 'dotenv' )
-process.env.travis ? '' : dotenv.load()
+process.env.noenv ? '' : dotenv.load()
 
 // Application settings
 process.env.NODE_ENV = 'production'
