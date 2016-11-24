@@ -2,3 +2,25 @@ language: node_js
 node_js:
   - "6"
   - "5"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+env:
+  - port=8000
+  - dbHost=localhost
+  - dbDialect=postgres
+  - dbName=travis_ci_test
+  - dbUser=postgres
+  # - dbPass=mentor
+  - dbForce=true
+  - dbLogging=false
+  - verbose=true
+  - dbTimestamps=true
+  - cookieSecret='super mega ukulele'
+  - cookieMaxage=3600000
+  - cookieSecure=false
+  - sessionSecret='super mega ukulele'
+  - appURL='http://localhost:8000'
+  - compress=false
+  - NODE_ENV=development
