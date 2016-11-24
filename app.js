@@ -32,7 +32,7 @@ db.conn.sync( {force: dev.bool( process.env.dbForce )} )
 
 		// Listen for requests
 		var server = app.listen ( Number( process.env.port ), () => {
-			if ( process.env.NODE_ENV == 'development' )
+			if ( dev.bool( process.env.verbose ) )
 				console.log( 'App listening on port: ' + server.address().port )
 		} )
 

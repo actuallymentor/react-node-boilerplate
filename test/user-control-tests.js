@@ -25,10 +25,10 @@ let app = request( server )
 ///////////////////////
 describe( 'Server status' , f => {
 	// Server test
-	describe( 'GET /?lets=go ', f => {
+	describe( 'GET / ', f => {
 		// Data return check
 		it( 'server is online', done => {
-			app.get( '/?lets=go' )
+			app.get( '/' )
 			.expect( 200, done )
 		} )
 	} )
