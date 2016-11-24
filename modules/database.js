@@ -1,15 +1,15 @@
-// Container object
-var db = {}
-
 // Get helpers
-var dev = require( __dirname + '/helpers' )
+const dev = require( __dirname + '/helpers' )
 
 // Import environment
-var dotenv = require( 'dotenv' )
+const dotenv = require( 'dotenv' )
 dotenv.load()
 
-// Set up sql
-var Sequelize = require( 'sequelize' )
+// Container object
+let db = {}
+
+// Set up database connection
+let Sequelize = require( 'sequelize' )
 db.conn = new Sequelize( process.env.dbName, process.env.dbUser, process.env.dbPass, {
 	host: process.env.dbHost,
 	dialect: process.env.dbDialect,

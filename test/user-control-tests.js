@@ -10,6 +10,9 @@ dotenv.load()
 process.env.NODE_ENV = 'production'
 process.env.verbose = false
 
+// Test configs
+let verbose = false
+
 // Testing placeholder with the app
 let app = request( server )
 
@@ -22,7 +25,7 @@ describe( 'Server status' , f => {
 		// Data return check
 		it( 'server is online', done => {
 			app.get( '/' )
-				.expect( 200, done )
+			.expect( 200, done )
 		} )
 	} )
 })
@@ -49,7 +52,11 @@ describe( 'User API acceptance', f => {
 			.expect( 200, {
 				id: '1',
 				email: demoUser.email
-			}, done )
+			} )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 
@@ -65,6 +72,7 @@ describe( 'User API acceptance', f => {
 				email: demoUser.email
 			} )
 			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
 				Cookies = res.headers['set-cookie'].pop().split(';')[0]
 				done(  )
 			} )
@@ -80,7 +88,11 @@ describe( 'User API acceptance', f => {
 			.expect( 200, {
 				id: '1',
 				email: demoUser.email
-			}, done )
+			} )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done(  )
+			} )
 		} )
 	} )
 
@@ -103,7 +115,11 @@ describe( 'User API rejection', f => {
 			.expect('Content-Type', /json/)
 			.expect( 401, {
 				error: "User exists"
-			}, done )
+			} )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 
@@ -116,7 +132,11 @@ describe( 'User API rejection', f => {
 			.expect('Content-Type', /json/)
 			.expect( 401, {
 				error: 'Login failed'
-			}, done )
+			} )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 
@@ -126,7 +146,11 @@ describe( 'User API rejection', f => {
 			app.get( '/login/current' )
 			.expect( 401, {
 				error: "User not logged in"
-			}, done )
+			} )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 

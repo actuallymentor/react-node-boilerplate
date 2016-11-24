@@ -1,31 +1,34 @@
 // Import passport
-var passportLocal 	= require( __dirname + '/passport-global' )
-var LocalStrategy 	= require( 'passport-local' ).Strategy
+const passportLocal 	= require( __dirname + '/passport-global' )
+const LocalStrategy 	= require( 'passport-local' ).Strategy
 
 // Encryption library
-var bcrypt = require( 'bcrypt' )
+const bcrypt = require( 'bcrypt' )
 
 // Get helpers
-var dev = require( __dirname + '/helpers' )
+const dev = require( __dirname + '/helpers' )
 
 // Import db connection
-var db	= require( __dirname + '/../modules/database' )
+const db	= require( __dirname + '/../modules/database' )
 
 // Login procedure with the database
 passportLocal.use( new LocalStrategy(
-	// Set the default user field to email
+
+	// Set the default user field to email instead of 'username'
 	{ usernameField: 'email' },
 	( email, password, done ) => {
 
-		// Verbose statement
+		// Debug statement
 		dev.log( 'Attempting login with ' + email + ' and ' + password )
 
-		// Find the user reuested
+		// Find the user requested
 		db.User.findOne( {
 			where: {
 				email: email
 			}
 		} ).then( ( user ) => {
+
+			// If no matching user is found return errors
 			if( !user ) {
 				dev.log( 'User not found' )
 				return done( null, false, {
@@ -33,18 +36,18 @@ passportLocal.use( new LocalStrategy(
 				} )
 			}
 
-			// Verbose statement
+			// Debug statement
 			dev.log( 'Found user ' + user.email )
 
 			// Check if the user from the db matches the POSTed user`
-			bcrypt.compare( password, user.password, ( err, res ) => {
-				dev.log( 'Password evaluated ' + res )
-				if ( res == true ) {
+			bcrypt.compare( password, user.password, ( err, match ) => {
+				dev.log( 'Password evaluated ' + match )
+				if ( match ) {
 					return done(null, user)
 				} else {
-					dev.log( 'Something really messed up' )
+					dev.log( 'Password did not match' )
 					return done( null, false, {
-						message: 'Something really messed up'
+						message: 'Password did not match'
 					} )
 				}
 			} )

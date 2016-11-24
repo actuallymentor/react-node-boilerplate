@@ -17,21 +17,30 @@ app.use( '/login/', require( __dirname + '/routes/authentication' ) )
 // Registration
 app.use( '/register/', require( __dirname + '/routes/registration' ) )
 
-// Sync the database
+/////////////////////////////
+// Starting application
+////////////////////////////
+
 // Synchronise with database
-db.conn.sync( {force: dev.bool( process.env.dbForce )} ) .then( (  ) => {
-	( dev.bool( process.env.NODE_ENV == 'development' ) ) ? require( __dirname + '/modules/data-seed'  ) : console.log( 'Production, not seeding database' )
-} ).then( (  ) => {
-	dev.log ( 'Database sync succeeded' )
-	// Listen for requests
-	var server = app.listen ( Number( process.env.port ), () => {
-		if ( process.env.NODE_ENV == 'development' )
-			console.log( 'App listening on port: ' + server.address().port )
+db.conn.sync( {force: dev.bool( process.env.dbForce )} )
+	// Upon sync start the server
+	.then( db => {
+
+		// Seed database with data if we are in dev environment
+		( dev.bool( process.env.NODE_ENV == 'development' ) ) ? require( __dirname + '/modules/data-seed'  ) : console.log( 'Production, not seeding database' )
+		dev.log ( 'Database sync succeeded' )
+
+		// Listen for requests
+		var server = app.listen ( Number( process.env.port ), () => {
+			if ( process.env.NODE_ENV == 'development' )
+				console.log( 'App listening on port: ' + server.address().port )
+		} )
+
 	} )
-	// Throw an error if there is trouble
-	}, ( err ) => {
+	// If there is an error, console it
+	.catch( err => {
 		console.log('Database sync failed: ' + err)
-} )
+	} )
 
 // For testing
 module.exports = app

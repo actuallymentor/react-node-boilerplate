@@ -1,40 +1,27 @@
 // Require express
-var express = require( 'express' )
-var router 	= express.Router()
-var session = require( 'express-session' )
+const express = require( 'express' )
+const router 	= express.Router( )
+const session = require( 'express-session' )
 
 // Get helpers
-var dev = require( __dirname + '/../modules/helpers' )
+const dev = require( __dirname + '/../modules/helpers' )
 
 // Get local passport module
-var passport = require( __dirname + '/../modules/passport-global' )
-var passportLocal = require( __dirname + '/../modules/passport-local' )
+const passport = require( __dirname + '/../modules/passport-global' )
+const passportLocal = require( __dirname + '/../modules/passport-local' )
 
 // Router ping for debugging
-router.use( passport.initialize(  ) )
-router.use( passport.session(  ) )
+router.use( passport.initialize( ) )
+router.use( passport.session( ) )
 
-// Login route
-// router.route( '/local' )
-// .post( passportLocal.authenticate( 'local' ), ( req, res ) => {
-// 	dev.log( "After login the user is: " + req.user.email )
-// 	if( req.user ) {
-// 		res.send ( {
-// 			email: req.user.email,
-// 			id: req.user.id
-// 		} )
-// 	} else {
-// 		dev.log( 'User login failed' )
-// 		res.status( 401 ).send( {
-// 			error: "Login failed"
-// 		} )
-// 	}
-// } )
-
+// Local login route
 router.route( '/local' )
 .post( ( req, res, next ) => {
+
 	// Call passport with a custom callback structure see http://passportjs.org/docs/authenticate
 	passportLocal.authenticate( 'local', ( err, user, info ) => {
+
+		// Debug and error statements
 		dev.log( "After login the user is: " + user.email )
 		if ( err ) return next( err )
 
@@ -50,11 +37,15 @@ router.route( '/local' )
 		// Log in the user if it exists
 		req.login( user, err => {
 			if ( err ) return next( err )
+
+			// Send user data in reponse
 			res.send ( {
 				email: user.email,
 				id: user.id
 			} )
+
 		} )
+
 		// Give the request objects using closure syntax
 	} )( req, res, next )
 } )

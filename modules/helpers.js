@@ -1,3 +1,4 @@
+// Just a little function to translate strings to booleans
 const bool = input => {
 	if( input == 'true' ) {
 		return true
@@ -8,15 +9,10 @@ const bool = input => {
 	}
 }
 
-const log = message => {
-	if ( bool ( process.env.verbose ) ) {
-		console.log( message )
-	}
-}
+// Console logger if environment 'verbose' is set to true
+const log = message => bool ( process.env.verbose ) ? console.log( message ) : ''
 
 module.exports = {
-	// Just a little function to translate strings to booleans
 	bool: bool,
-	// Logger if environment agrees
 	log: log
 }
