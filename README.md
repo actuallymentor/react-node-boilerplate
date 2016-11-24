@@ -1,5 +1,7 @@
 # React.js + Node.js minimalistic boilerplate
 
+**WORK IN PROGRESS**
+
 Frontend:
 * React.js
 * SASS
