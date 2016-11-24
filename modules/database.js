@@ -3,7 +3,7 @@ const dev = require( __dirname + '/helpers' )
 
 // Import environment
 const dotenv = require( 'dotenv' )
-dotenv.load()
+process.env.travis ? '' : dotenv.load()
 
 // Container object
 let db = {}

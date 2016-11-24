@@ -14,17 +14,19 @@ import './styles/styles.scss'
 import Lorem from './stateless/lorem-ipsum-view'
 
 class App extends React.Component {
-	render(  ) {
+
+	// Render the main application element
+	render( ) {
 		return (
 			<div className = "flexify">
 				<header>
 					<Panel id= "menu" />
 					<Header
-						id = "header"
-						title = "Home"
+						id 		 = "header"
+						title 	 = "Home"
 						subtitle = "Welcome stranger"
-						name="Identity"
-						logo=""
+						name	 = "Identity"
+						logo	 = ""
 					/>
 				</header>
 				<Main>
@@ -34,7 +36,7 @@ class App extends React.Component {
 					owner = "Mentor Palokaj"
 				 />
 			</div>
-			)
+		)
 	}
 }
 

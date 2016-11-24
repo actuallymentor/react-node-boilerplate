@@ -4,14 +4,19 @@ let request	  = require( "supertest" )
 // import the app
 let server = require( __dirname + "/../app.js" )
 
+// Get helpers
+var dev = require( __dirname + '/../modules/helpers' )
+
 // Import environment
 let dotenv = require( 'dotenv' )
-dotenv.load()
+process.env.travis ? '' : dotenv.load()
+
+// Application settings
 process.env.NODE_ENV = 'production'
 process.env.verbose = false
 
-// Test configs
-let verbose = false
+// Make test verbose if the environment does not prevent it
+let verbose = dev.bool( process.env.verboseTest ) ? true : false
 
 // Testing placeholder with the app
 let app = request( server )
@@ -21,11 +26,15 @@ let app = request( server )
 ///////////////////////
 describe( 'Server status' , f => {
 	// Server test
-	describe( 'GET / ', f => {
+	describe( 'GET /index.html ', f => {
 		// Data return check
 		it( 'server is online', done => {
-			app.get( '/' )
-			.expect( 200, done )
+			app.get( '/index.html' )
+			.expect( 200 )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 })
