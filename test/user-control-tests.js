@@ -4,6 +4,9 @@ let request	  = require( "supertest" )
 // import the app
 let server = require( __dirname + "/../app.js" )
 
+// Get helpers
+var dev = require( __dirname + '/../modules/helpers' )
+
 // Import environment
 let dotenv = require( 'dotenv' )
 process.env.travis ? '' : dotenv.load()
@@ -11,8 +14,8 @@ process.env.travis ? '' : dotenv.load()
 process.env.NODE_ENV = 'production'
 process.env.verbose = false
 
-// Test configs
-let verbose = true
+// Make test verbose if the environment does not prevent it
+let verbose = dev.bool( process.env.verboseTest ) ? true : false
 
 // Testing placeholder with the app
 let app = request( server )
