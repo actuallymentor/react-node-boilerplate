@@ -28,7 +28,7 @@ describe( 'Server status' , f => {
 	describe( 'GET /?lets=go ', f => {
 		// Data return check
 		it( 'server is online', done => {
-			app.get( '/' )
+			app.get( '/?lets=go' )
 			.expect( 200, done )
 		} )
 	} )
