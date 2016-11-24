@@ -1,3 +1,11 @@
+language: node_js
+node_js:
+  - "7"
+  - "6"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 env:
   - port=8000
   - dbHost=localhost
@@ -15,23 +23,11 @@ env:
   - appURL='http://localhost:8000'
   - compress=false
   - NODE_ENV=development
-  - CXX=g++-4.8
-before_install:
-  - npm install -g npm@latest node-gyp@latest
+  - CXX=g++-5
+  - CC=g++-5
 addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
     packages:
-    - g++-4.8
-    - gcc-4.8
-    - libgnome-keyring-dev
-language: node_js
-node_js:
-  - "7"
-  - "6"
-  - "5"
-services:
-  - postgresql
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+    - g++-5
