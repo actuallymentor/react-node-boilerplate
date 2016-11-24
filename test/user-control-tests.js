@@ -25,7 +25,7 @@ let app = request( server )
 ///////////////////////
 describe( 'Server status' , f => {
 	// Server test
-	describe( 'GET / ', f => {
+	describe( 'GET /?lets=go ', f => {
 		// Data return check
 		it( 'server is online', done => {
 			app.get( '/' )
