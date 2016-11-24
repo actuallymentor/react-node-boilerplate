@@ -11,6 +11,7 @@ var dev = require( __dirname + '/../modules/helpers' )
 let dotenv = require( 'dotenv' )
 process.env.travis ? '' : dotenv.load()
 
+// Application settings
 process.env.NODE_ENV = 'production'
 process.env.verbose = false
 
@@ -25,11 +26,15 @@ let app = request( server )
 ///////////////////////
 describe( 'Server status' , f => {
 	// Server test
-	describe( 'GET / ', f => {
+	describe( 'GET /index.html ', f => {
 		// Data return check
 		it( 'server is online', done => {
-			app.get( '/' )
-			.expect( 200, done )
+			app.get( '/index.html' )
+			.expect( 200 )
+			.end( ( err, res ) => {
+				verbose ? console.log( res.body ) : ''
+				done( )
+			} )
 		} )
 	} )
 })
