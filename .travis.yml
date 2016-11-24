@@ -12,7 +12,6 @@ env:
   - dbDialect=postgres
   - dbName=travis_ci_test
   - dbUser=postgres
-  # - dbPass=mentor
   - dbForce=true
   - dbLogging=false
   - verbose=true
@@ -24,3 +23,10 @@ env:
   - appURL='http://localhost:8000'
   - compress=false
   - NODE_ENV=development
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
