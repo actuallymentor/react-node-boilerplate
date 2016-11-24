@@ -11,24 +11,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - webpack --progress -p
 env:
-  - port=8000
-  - dbHost=localhost
-  - dbDialect=postgres
-  - dbName=travis_ci_test
-  - dbUser=postgres
-  - dbForce=true
-  - dbLogging=false
   - verbose=true
-  - dbTimestamps=true
-  - cookieSecret='super mega ukulele'
-  - cookieMaxage=3600000
-  - cookieSecure=false
-  - sessionSecret='super mega ukulele'
-  - appURL='http://localhost:8000'
-  - compress=false
-  - NODE_ENV=development
-  - CXX=g++-5
-  - CC=g++-5
 addons:
   apt:
     sources:
