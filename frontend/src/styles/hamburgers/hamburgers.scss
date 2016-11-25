@@ -29,37 +29,40 @@ $hamburger-hover-filter    : opacity(50%) !default;
 // Types (Remove or comment out what you don’t need)
 // ==================================================
 $hamburger-types: (
-  3dx,
-  3dx-r,
-  3dy,
-  3dy-r,
-  arrow,
-  arrow-r,
-  arrowalt,
-  arrowalt-r,
-  boring,
-  collapse,
-  collapse-r,
-  elastic,
-  elastic-r,
-  emphatic,
-  emphatic-r,
-  slider,
-  slider-r,
-  spring,
-  spring-r,
-  stand,
-  stand-r,
-  spin,
-  spin-r,
-  squeeze,
-  vortex,
-  vortex-r
+  // 3dx,
+  // 3dx-r,
+  // 3dy,
+  // 3dy-r,
+  // arrow,
+  // arrow-r,
+  // arrowalt,
+  // arrowalt-r,
+  // boring,
+  // collapse,
+  // collapse-r,
+  // elastic,
+  // elastic-r,
+  // emphatic,
+  // emphatic-r,
+  // slider,
+  // slider-r,
+  // spring,
+  // spring-r,
+  // stand,
+  // stand-r,
+  // spin,
+  // spin-r,
+  squeeze
+  // vortex,
+  // vortex-r
 ) !default;
 
 // Base Hamburger (We need this)
 // ==================================================
 @import "base";
+
+// Edit by Mentor: I removed the types not needed
+// but left the project as intact as I could
 
 // Hamburger types
 // ==================================================

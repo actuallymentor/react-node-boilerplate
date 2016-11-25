@@ -59,14 +59,14 @@ webpack --progress -p # for production code
 
 ```
 
-Or as a watching service that rebuilds whenthe frontend is edited
+Or as a watching service that rebuilds when the frontend is edited
 
 ```shell
 webpack --progress -d --watch # for development mode, no minification etc
 webpack --progress -p --watch # for production code
 ```
 
-Note that webpack will trigger browsersync, this does not mean your backend is running. Only that your frontend is statically served.
+Note that webpack with --watch will trigger browsersync, this does not mean your backend is running. Only that your frontend is statically served.
 
 **Starting the backend**
 
