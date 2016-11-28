@@ -23,6 +23,14 @@
 
 Integrates well with TravisCI
 
+## Frontend live Demo
+
+The stripped frontend is available as a boilerplate [here]( https://github.com/actuallymentor/react-frontend-boilerplate ).
+
+[Link to frontend live demo on Github Pages]( https://actuallymentor.github.io/react-frontend-boilerplate/ )
+
+<a href="https://actuallymentor.github.io/react-frontend-boilerplate/"><img src="http://i.imgur.com/xNMHVx5.png" /></a>
+
 ## Getting started
 
 Git clone this repository and npm install.
