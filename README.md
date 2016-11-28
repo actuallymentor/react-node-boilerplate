@@ -51,7 +51,7 @@ The frontend source in frontend/src is compiled using webpack. Make sure you hav
 npm install -g webpack
 ```
 
-You can then fun webpack either once:
+You can then run webpack either once:
 
 ```shell
 webpack --progress -d # for development mode, no minification etc
