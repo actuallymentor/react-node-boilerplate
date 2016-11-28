@@ -22,24 +22,6 @@ let verbose = dev.bool( process.env.verboseTest ) ? true : false
 let app = request( server )
 
 ////////////////////////
-// Api server status
-///////////////////////
-describe( 'Server status' , f => {
-	// Server test
-	describe( 'GET /index.html ', f => {
-		// Data return check
-		it( 'server is online', done => {
-			app.get( '/index.html' )
-			.expect( 200 )
-			.end( ( err, res ) => {
-				verbose ? console.log( res.body ) : ''
-				done( err )
-			} )
-		} )
-	} )
-})
-
-////////////////////////
 // Accept authorized
 ////////////////////////
 
