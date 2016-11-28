@@ -33,7 +33,7 @@ describe( 'Server status' , f => {
 			.expect( 200 )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done( )
+				done( err )
 			} )
 		} )
 	} )
@@ -64,7 +64,7 @@ describe( 'User API acceptance', f => {
 			} )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done( )
+				done( err )
 			} )
 		} )
 	} )
@@ -83,7 +83,7 @@ describe( 'User API acceptance', f => {
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
 				Cookies = res.headers['set-cookie'].pop().split(';')[0]
-				done(  )
+				done( err )
 			} )
 		} )
 	} )
@@ -100,7 +100,7 @@ describe( 'User API acceptance', f => {
 			} )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done(  )
+				done( err )
 			} )
 		} )
 	} )
@@ -127,7 +127,7 @@ describe( 'User API rejection', f => {
 			} )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done( )
+				done( err )
 			} )
 		} )
 	} )
@@ -144,7 +144,7 @@ describe( 'User API rejection', f => {
 			} )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done( )
+				done( err )
 			} )
 		} )
 	} )
@@ -158,7 +158,7 @@ describe( 'User API rejection', f => {
 			} )
 			.end( ( err, res ) => {
 				verbose ? console.log( res.body ) : ''
-				done( )
+				done( err )
 			} )
 		} )
 	} )
