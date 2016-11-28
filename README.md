@@ -1,6 +1,6 @@
 # React Node Boilerplate ![Build Status](https://travis-ci.org/actuallymentor/react-node-boilerplate.svg?branch=development)  ![GitHub version](https://badge.fury.io/gh/actuallymentor%2Freact-node-boilerplate.svg)
 
-<img height="50px" alt="react" src="http://i.imgur.com/84PLMw0.jpg" />
+<img height="50px" alt="react" src="http://i.imgur.com/D19TgT8.png" />
 <img height="50px" alt="webpack" src="http://i.imgur.com/ZtANAeL.png" />
 <img height="50px" alt="browsersync" src="http://i.imgur.com/L5peje9.png" />
 <img height="50px" alt="node" src="http://i.imgur.com/PYufxoi.png" />
@@ -51,7 +51,7 @@ The frontend source in frontend/src is compiled using webpack. Make sure you hav
 npm install -g webpack
 ```
 
-You can then fun webpack either once:
+You can then run webpack either once:
 
 ```shell
 webpack --progress -d # for development mode, no minification etc

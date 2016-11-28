@@ -13,7 +13,7 @@ app.use( function logger (req, res, next) {
 })
 
 // Set the static to the public folder
-app.use( express.static( __dirname + '/../frontend/public' ) )
+app.use( express.static( __dirname + '/../frontend/public/' ) )
 
 // Set cookie usage
 app.use( cookie( process.env.cookieSecret ) )
