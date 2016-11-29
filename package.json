@@ -1,6 +1,6 @@
 {
   "name": "marerial-skeleton",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Skeleton project for apps",
   "main": "app.js",
   "scripts": {
