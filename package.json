@@ -1,22 +1,34 @@
 {
-  "name": "marerial-skeleton",
+  "name": "generator-react-node-boilerplate",
   "version": "1.0.0",
-  "description": "Skeleton project for apps",
+  "description": "A boilerplate for applications. Backend: [ Node, Express, Sequelize, Passport ] and Frontend: [ React, Babel, Webpack, Browsersync ]",
   "main": "app.js",
   "scripts": {
     "test": "mocha",
     "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/actuallymentor/material-skeleton.git"
+  "repository": "actuallymentor/react-node-boilerplate",
+  "author": {
+    "name": "Mentor Palokaj",
+    "email": "mentor@palokaj.co",
+    "url": "https://github.com/actuallymentor"
   },
-  "author": "Mentor",
+  "keywords": [
+    "node",
+    "express",
+    "sequelize",
+    "passport",
+    "react",
+    "babel",
+    "webpack",
+    "browsersync",
+    "sass"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actuallymentor/material-skeleton/issues"
+    "url": "https://github.com/actuallymentor/react-node-boilerplate/issues"
   },
-  "homepage": "https://github.com/actuallymentor/material-skeleton#readme",
+  "homepage": "https://github.com/actuallymentor/react-node-boilerplate#readme",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "bcrypt-nodejs": "0.0.3",
@@ -28,8 +40,7 @@
     "passport": "0.3.2",
     "passport-local": "1.0.0",
     "pg": "6.1.0",
-    "sequelize": "3.24.2",
-    "supertest": "^2.0.1"
+    "sequelize": "3.24.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.2",
@@ -47,9 +58,9 @@
     "postcss-loader": "^1.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "request": "^2.75.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "supertest": "^2.0.1",
     "webpack": "^1.13.2"
   }
 }
