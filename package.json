@@ -1,22 +1,23 @@
 {
-  "name": "marerial-skeleton",
+  "name": "generator-react-node-boilerplate",
   "version": "1.0.0",
-  "description": "Skeleton project for apps",
+  "description": "A boilerplate for applications. Backend: [ Node, Express, Sequelize, Passport ] and Frontend: [ React, Babel, Webpack, Browsersync ]",
   "main": "app.js",
   "scripts": {
     "test": "mocha",
     "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/actuallymentor/material-skeleton.git"
+  "repository": "actuallymentor/react-node-boilerplate",
+  "author": {
+    "name": "Mentor Palokaj",
+    "email": "mentor@palokaj.co",
+    "url": "https://github.com/actuallymentor"
   },
-  "author": "Mentor",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actuallymentor/material-skeleton/issues"
+    "url": "https://github.com/actuallymentor/react-node-boilerplate/issues"
   },
-  "homepage": "https://github.com/actuallymentor/material-skeleton#readme",
+  "homepage": "https://github.com/actuallymentor/react-node-boilerplate#readme",
   "dependencies": {
     "bcrypt": "^0.8.7",
     "bcrypt-nodejs": "0.0.3",
