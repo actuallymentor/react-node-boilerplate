@@ -1,4 +1,3 @@
-let expect    = require( "chai" ).expect
 let request	  = require( "supertest" )
 
 // import the app
